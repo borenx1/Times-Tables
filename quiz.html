@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Times Table Quiz</title>
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Times Table Quiz</h1>
+    </header>
+    <main>
+      <p>Test and practice your times table knowledge!</p>
+      <section>
+          Choose your level:
+          <select id="level-select">
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select>
+      </section>
+      <a id="table-link" href="table.html">See full table</a>
+    </main>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script>
+      $(function() {
+        $("#level-select").on("change", function() {
+          // Change "See full table" link to the current level
+          $("#table-link").attr("href", "table.html?level=" + this.value);
+        });
+
+        // Generate default quiz on load
+        $("#level-select").trigger("change");
+      });
+    </script>
+  </body>
+</html>

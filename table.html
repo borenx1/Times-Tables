@@ -11,7 +11,7 @@
       <h1 id="heading">Times Table</h1>
     </header>
     <main>
-      <select id="number-select">
+      <select id="level-select">
         <option value="10">10</option>
         <option value="11">11</option>
         <option value="12">12</option>
@@ -24,6 +24,7 @@
         <option value="19">19</option>
         <option value="20">20</option>
       </select>
+      <a id="quiz-link" href="quiz.html">Go to quiz</a>
       <div class="times-table-container"></div>
     </main>
 
@@ -32,12 +33,14 @@
     <script>
       // Implement functionality for generating tables
       $(function() {
-        $("#number-select").on("change", function() {
+        $("#level-select").on("change", function() {
           $("div.times-table-container").html(generate_times_table(this.value, this.value));
+          // Change "Go to quiz" link to the current level
+          $("#quiz-link").attr("href", "quiz.html?level=" + this.value);
         });
-        
+
         // Generate default table on load
-        $("#number-select").trigger("change");
+        $("#level-select").trigger("change");
       });
     </script>
   </body>
