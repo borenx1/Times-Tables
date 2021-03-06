@@ -24,7 +24,7 @@
         <option value="19">19</option>
         <option value="20">20</option>
       </select>
-      <div id="times-table-container"></div>
+      <div class="times-table-container"></div>
     </main>
 
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -33,10 +33,10 @@
       // Implement functionality for generating tables
       $(function() {
         $("#number-select").on("change", function() {
-          $("#times-table-container").html(this.value + " Times Table")
-          console.log("Generate " + this.value + " times table");
+          $("div.times-table-container").html(generate_times_table(this.value, this.value));
         });
-        // Generate default table
+        
+        // Generate default table on load
         $("#number-select").trigger("change");
       });
     </script>
