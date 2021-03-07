@@ -1,3 +1,5 @@
+var quizController;
+
 function getLevel() {
   return parseInt($("#select-level").val());
 }
@@ -13,17 +15,16 @@ function getQuizMinFactor() {
 /**
  * Initialize quiz based on current page settings
  */
- function initQuizDefault() {
-  initQuiz(
-    getLevel(),
-    getQuizSize(),
-    getQuizMinFactor(),
+function initQuizDefault() {
+  var quiz = new TimesTableQuiz(getLevel(), getQuizSize(), getQuizMinFactor());
+  quizController = new TimesTableQuizController(
+    quiz,
     "quiz-output",
     "quiz-comment",
     "quiz-input",
     "quiz-enter",
     "quiz-progress"
-  );
+    );
 }
 
 // Generate times table quizzes based on level selection

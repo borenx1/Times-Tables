@@ -65,104 +65,163 @@ function fillQuizMinFactorSelect(level, selectId) {
   select.html(options.join(""));
 }
 
-/**
- * Initialize the times table quiz given settings and HTML components.
- * @param {number} level The level of the quiz (level x level times table).
- * @param {number} size How many questions in the quiz (0 for unlimited).
- * @param {number} minFactor The minimum factor (multiple) of the questions.
- * @param {string} outputId The id of the question output element.
- * @param {string} commentId The id of the comment output element.
- * @param {string} inputId The id of the input element.
- * @param {string} enterButtonId The id of the enter button.
- * @param {string} progressId The id of the progress display element.
- */
-function initQuiz(level, size, minFactor, outputId, commentId, inputId, enterButtonId, progressId) {
-  console.log(`Initialize quiz; level: ${level}, size: ${size}, min factor: ${minFactor}`);
-  var output = $("#" + outputId);
-  var comment = $("#" + commentId);
-  var input = $("#" + inputId);
-  var enterButton = $("#" + enterButtonId);
-  var progressOutput = $("#" + progressId);
-
-  // Init quiz variables
-  /** 0 for showing question, 1 for showing answer, 2 for showing results, 3 for finished. */
-  var state;
-  var progress;
-  var correctAnswers;
-  var factor1;
-  var factor2;
-
-  function updateProgress() {
-    progress += 1;
-    let progressText = size == 0 ? `Question ${progress}` : `Question ${progress}/${size}`;
-    progressOutput.text(progressText);
+/** The logic for the times table quiz. */
+class TimesTableQuiz {
+  /**
+   * Constructor for a Times Table Quiz.
+   * @param {number} level The level of the quiz (level x level times table).
+   * @param {number} size How many questions in the quiz (0 for unlimited).
+   * @param {number} minFactor The minimum factor (multiple) of the questions.
+   */
+  constructor(level, size, minFactor) {
+    // Quiz settings
+    this.level = level;
+    this.size = size;
+    this.minFactor = minFactor;
+    // Init quiz variables
+    this.progress;
+    this.correctAnswers;
+    this.factor1;
+    this.factor2;
+    this.restart();
+    console.log("Initialize quiz");
   }
 
-  function checkAnswer() {
-    return parseInt(input.val()) === factor1 * factor2;
+  restart() {
+    this.progress = 0;
+    this.correctAnswers = 0;
+    this.nextQuestion();
   }
 
-  function nextQuestion() {
-    input.val("");
-    comment.text("");
-    factor1 = randomInt(minFactor, level);
-    factor2 = randomInt(minFactor, level);
-    output.text(`${factor1} × ${factor2}`);
-    updateProgress();
-    state = 1;
+  nextQuestion() {
+    this.factor1 = randomInt(this.minFactor, this.level);
+    this.factor2 = randomInt(this.minFactor, this.level);
+    this.progress += 1;
   }
 
-  function showAnswer() {
-    if (checkAnswer()) {
-      comment.text("Correct!");
-      correctAnswers += 1;
+  getAnswer() {
+    return this.factor1 * this.factor2;
+  }
+
+  /**
+   * Answers the question of factor1 * factor2. If the answer is correct, increment the
+   * correctAnswers tally. Generates a new question (and increment the progress).
+   * @param {number} answer Given answer of the question (factor1 * factor2)
+   * @returns true if the answer is correct, else false.
+   */
+  answerQuestion(answer) {
+    var correct = parseInt(answer) === this.getAnswer();
+    if (correct) {
+      this.correctAnswers += 1;
+    }
+    this.nextQuestion();
+    return correct;
+  }
+
+  /**
+   * Checks if the game is finished.
+   * @returns true if the progress > the game size and the size is not 0 (unlimited), else false.
+   */
+  isFinished() {
+    return this.size != 0 && this.progress > this.size;
+  }
+}
+
+/** A controller for connecting a times table quiz to views. */
+class TimesTableQuizController {
+  /**
+   * Constructor for a Times Table Quiz controller. The initial state depends on the given state of
+   * the passed TimesTableQuiz object.
+   * @param {TimesTableQuiz} quiz A TimesTableQuiz object.
+   * @param {string} outputId The id of the question output element.
+   * @param {string} commentId The id of the comment output element.
+   * @param {string} inputId The id of the input element.
+   * @param {string} enterButtonId The id of the enter button.
+   * @param {string} progressId The id of the progress display element.
+   */
+  constructor(quiz, outputId, commentId, inputId, enterButtonId, progressId) {
+    this.quiz = quiz;
+    this.output = $("#" + outputId);
+    this.comment = $("#" + commentId);
+    this.input = $("#" + inputId);
+    this.enterButton = $("#" + enterButtonId);
+    this.progressOutput = $("#" + progressId);
+    /** The current state: 0 for showing question, 1 for showing answer, 2 for showing results. */
+    this.state;
+
+    // Attach/Reattach event handlers
+    this.enterButton.off("click");
+    this.enterButton.on("click", () => this.enter());
+
+    this.input.off("keydown");
+    this.input.on("keydown", (e) => {
+      // Key enter on input triggers button click
+      if (e.keyCode === 13) {
+        this.enterButton.trigger("click");
+      }
+    })
+
+    // Initialize views
+    this.showQuestion();
+    console.log("Initialize controller");
+  }
+
+  enter() {
+    if (this.state == 0) {
+      this.showAnswer();
+    } else if (this.state == 1) {
+      // Check if the quiz is completed to decide whether to end or go to next question
+      if (this.quiz.isFinished()) {
+        this.showResults();
+      } else {
+        this.showQuestion();
+      }
+    } else if (this.state == 2) {
+      // Restart quiz after quiz completed
+      this.restart();
     } else {
-      comment.text(`Wrong! The answer is ${factor1 * factor2}!`);
+      console.warn("Unknown state: " + this.state);
     }
-    // Check if the quiz is completed to decide whether to end or go to next question
-    state = (size != 0 && progress >= size) ? 2 : 0;
+    this.input.focus();
   }
 
-  function showResults() {
-    output.text(`${correctAnswers}/${size} (${(correctAnswers/size*100).toFixed(1)}%)`);
-    comment.text("Reset quiz to try again");
-    state = 3;
-  }
-
-  function restart() {
-    state = 0;
-    progress = 0;
-    correctAnswers = 0;
-    nextQuestion();
-  }
-
-  // Reattach handlers
-  enterButton.off("click");
-  enterButton.on("click", function() {
-    if (state == 0) {
-      nextQuestion();
-    } else if (state == 1) {
-      showAnswer();
-    } else if (state == 2) {
-      showResults();
-    } else if (state == 3) {
-      // Quiz completed, no action
+  showQuestion() {
+    this.state = 0;
+    this.input.val("");
+    this.comment.text("");
+    this.output.text(`${this.quiz.factor1} × ${this.quiz.factor2}`);
+    // Update the progress text
+    if (this.quiz.size == 0) {
+      this.progressOutput.text(`Question ${this.quiz.progress}`);
     } else {
-      console.warn("Unknown state: " + state);
+      this.progressOutput.text(`Question ${this.quiz.progress}/${this.quiz.size}`);
     }
-    input.focus();
-  });
+    // Set focus to the input at the end for convenience
+    this.input.focus();
+  }
 
-  input.off("keydown");
-  input.on("keydown", function(e) {
-    if (e.keyCode === 13) {
-      enterButton.trigger("click");
+  showAnswer() {
+    this.state = 1;
+    // Get answer before answering the quiz and generating a new question
+    var answer = this.quiz.getAnswer();
+    if (this.quiz.answerQuestion(parseInt(this.input.val()))) {
+      this.comment.text("Correct!");
+    } else {
+      this.comment.text(`Wrong! The answer is ${answer}!`);
     }
-  })
+  }
 
-  // Start first question
-  restart();
+  showResults() {
+    this.state = 2;
+    var correctAnswers = this.quiz.correctAnswers;
+    var quizSize = this.quiz.size;
 
-  // Set focus to the input in the end for convenience
-  input.focus();
+    this.output.text(`${correctAnswers}/${quizSize} (${(correctAnswers/quizSize*100).toFixed(1)}%)`);
+    this.comment.text("Press enter to try again");
+  }
+
+  restart() {
+    this.quiz.restart();
+    this.showQuestion();
+  }
 }
