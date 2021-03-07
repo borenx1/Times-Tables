@@ -1,13 +1,28 @@
+function getLevel() {
+  return parseInt($("#select-level").val());
+}
+
+function getQuizSize() {
+  return parseInt($("#select-quiz-size").val());
+}
+
+function getQuizMinFactor() {
+  return parseInt($("#select-quiz-min-factor").val());
+}
+
 /**
  * Initialize quiz based on current page settings
  */
  function initQuizDefault() {
   initQuiz(
-    $("#select-quiz-number").val(),
-    $("#select-quiz-min-factor").val(),
+    getLevel(),
+    getQuizSize(),
+    getQuizMinFactor(),
     "quiz-output",
+    "quiz-comment",
     "quiz-input",
-    "quiz-enter"
+    "quiz-enter",
+    "quiz-progress"
   );
 }
 
@@ -33,7 +48,7 @@ $(function() {
   
   //// Implement quiz functionality
   // Reset quiz on change settings
-  $("#select-quiz-number").on("change", function() {
+  $("#select-quiz-size").on("change", function() {
     initQuizDefault();
   });
   $("#select-quiz-min-factor").on("change", function() {

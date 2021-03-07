@@ -31,8 +31,8 @@
       <a id="table-link" href="table.html">See full table</a>
       <div class="quiz-container">
         <div class="quiz-bar">
-          <label for="select-quiz-number">Number of questions</label>
-          <select id="select-quiz-number">
+          <label for="select-quiz-size">Number of questions</label>
+          <select id="select-quiz-size">
             <option value="5">5</option>
             <option value="10" selected>10</option>
             <option value="15">15</option>
@@ -47,9 +47,15 @@
           <button id="button-quiz-reset" class="quiz-reset-button">Reset quiz</button>
         </div>
         <div class="quiz-content">
-          <label id="quiz-output" for="quiz-input" class="quiz-output"></label>
+          <div>
+            <label id="quiz-output" for="quiz-input" class="quiz-output"></label>
+          </div>
+          <div id="quiz-comment" class="quiz-comment"></div>
           <input id="quiz-input" type="text" class="quiz-input">
-          <button id="quiz-enter" class="quiz-enter">Enter</button>
+          <div>
+            <button id="quiz-enter" class="quiz-enter">Enter</button>
+            <span id="quiz-progress" class="quiz-progress">Question 1</span>
+          </div>
         </div>
       </div>
     </main>
