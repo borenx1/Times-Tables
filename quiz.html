@@ -29,6 +29,29 @@
           </select>
       </section>
       <a id="table-link" href="table.html">See full table</a>
+      <div class="quiz-container">
+        <div class="quiz-bar">
+          <label for="select-quiz-number">Number of questions</label>
+          <select id="select-quiz-number">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="0">Unlimited</option>
+          </select>
+          <label for="select-quiz-min-factor">Minimum factor</label>
+          <select id="select-quiz-min-factor">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+          </select>
+          <button>Start quiz</button>
+        </div>
+        <div class="quiz-content">
+          <label id="quiz-question" for="quiz-input" class="quiz-question"></label>
+          <input id="quiz-input" type="text" class="quiz-input">
+          <button id="quiz-enter" class="quiz-enter">Enter</button>
+        </div>
+      </div>
     </main>
 
     <script src="js/jquery-3.6.0.min.js"></script>
