@@ -4,10 +4,10 @@ $(document).ready(function() {
 
 /**
  * Generates and returns a times table.
- * @param {*} rowMax Maximum row number.
- * @param {*} colMax Maximum column number.
- * @param {*} rowMin Minimum row number. Defaults to 1.
- * @param {*} colMin Minimum column number. Defaults to 1.
+ * @param {number} rowMax Maximum row number.
+ * @param {number} colMax Maximum column number.
+ * @param {number} rowMin Minimum row number. Defaults to 1.
+ * @param {number} colMin Minimum column number. Defaults to 1.
  * @returns A jQuery table object.
  */
 function generateTimesTable(rowMax, colMax, rowMin = 1, colMin = 1) {
@@ -55,6 +55,14 @@ function fillQuizMinFactorSelect(level, selectId) {
   select.html(options.join(""));
 }
 
+/**
+ * Initialize the times table quiz given settings and HTML components.
+ * @param {number} size How many questions in the quiz (0 for unlimited).
+ * @param {number} minFactor The minimum factor (multiple) of the questions.
+ * @param {string} outputId The id of the output element.
+ * @param {string} inputId The id of the input element.
+ * @param {string} enterButtonId The id of the enter button.
+ */
 function initQuiz(size, minFactor, outputId, inputId, enterButtonId) {
   console.log("Initialize quiz; size: " + size + ", min factor: " + minFactor);
   var output = $("#" + outputId);
