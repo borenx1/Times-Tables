@@ -1,5 +1,7 @@
 $(document).ready(function() {
   console.log("functions.js loaded");
+  // Load navbar on pages with ".navbar-container"
+  $(".navbar-container").load("common/navbar.html");
 });
 
 /**
