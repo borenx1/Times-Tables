@@ -33,4 +33,5 @@ body {
 }
 .navbar a.active {
   background-color: rgb(18, 136, 190);
+  color: #ffffff;
 }
