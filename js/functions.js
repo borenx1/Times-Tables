@@ -2,12 +2,13 @@ $(document).ready(function() {
   console.log("functions.js loaded");
   // Load navbar on pages with ".navbar-container"
   $(".navbar-container").load("common/navbar.html", function() {
-    var path = window.location.pathname;
-    if (path == "/index.html" || path == "/") {
+    // Get the last item in the path (to be able to host on GitHub Pages)
+    var path = window.location.pathname.split("/").slice(-1)[0];
+    if (path == "index.html" || path == "") {
       $("#nav-home").addClass("active");
-    } else if (path == "/table.html") {
+    } else if (path == "table.html") {
       $("#nav-table").addClass("active");
-    } else if (path == "/quiz.html") {
+    } else if (path == "quiz.html") {
       $("#nav-quiz").addClass("active");
     }
   });
