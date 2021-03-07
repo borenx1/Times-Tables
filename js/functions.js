@@ -1,7 +1,16 @@
 $(document).ready(function() {
   console.log("functions.js loaded");
   // Load navbar on pages with ".navbar-container"
-  $(".navbar-container").load("common/navbar.html");
+  $(".navbar-container").load("common/navbar.html", function() {
+    var path = window.location.pathname;
+    if (path == "/index.html" || path == "/") {
+      $("#nav-home").addClass("active");
+    } else if (path == "/table.html") {
+      $("#nav-table").addClass("active");
+    } else if (path == "/quiz.html") {
+      $("#nav-quiz").addClass("active");
+    }
+  });
 });
 
 /**

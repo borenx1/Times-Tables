@@ -9,29 +9,28 @@ body {
 }
 
 .navbar {
-  /* position: relative;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between; */
-  background-color: lightblue;
+  background-color: rgb(173, 216, 230);
 }
 .navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: inline-block;
 }
 .navbar ul li {
-  display: inline-block;
+  float: left;
 }
 .navbar ul li a {
-  display: inline-block;
+  display: block;
   padding: 0.75rem;
+  margin: 0;
   text-align: center;
   text-decoration: none;
   color: rgb(0, 0, 0, 1);
 }
 .navbar ul li:hover {
-  background-color: rgba(155, 212, 231);
+  background-color: rgb(155, 212, 231);
+}
+.navbar a.active {
+  background-color: rgb(18, 136, 190);
 }
