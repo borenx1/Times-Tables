@@ -3,17 +3,17 @@ $(function() {
   // Set default level based on url parameter "level"
   var defaultLevel = new URLSearchParams(window.location.search).get("level");
   // Check if "level" is a valid option
-  $("#level-select option").each(function() {
+  $("#select-level option").each(function() {
     if (defaultLevel == this.value) {
-      $("#level-select").val(defaultLevel);
+      $("#select-level").val(defaultLevel);
     }
   });
   
-  $("#level-select").on("change", function() {
+  $("#select-level").on("change", function() {
     // Change "See full table" link to the current level
     $("#table-link").attr("href", "table.html?level=" + this.value);
   });
 
   // Generate default quiz on load
-  $("#level-select").trigger("change");
+  $("#select-level").trigger("change");
 });
