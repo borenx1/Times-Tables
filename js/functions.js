@@ -10,7 +10,7 @@ $(document).ready(function() {
  * @param {*} colMin Minimum column number. Defaults to 1.
  * @returns A jQuery table object.
  */
-function generate_times_table(rowMax, colMax, rowMin = 1, colMin = 1) {
+function generateTimesTable(rowMax, colMax, rowMin = 1, colMin = 1) {
   console.log("Generate " + rowMax + " x " + colMax + " times table");
   var table = $("<table/>");
   var tableRows = [];
@@ -66,7 +66,7 @@ function initQuiz(size, minFactor, outputId, inputId, enterButtonId) {
   var factor1;
   var factor2;
 
-  
+
 
   // Set focus to the input in the end for convenience
   input.focus();
