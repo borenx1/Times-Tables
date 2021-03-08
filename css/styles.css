@@ -1,6 +1,17 @@
+:root {
+  --main-color: rgb(173, 216, 230);
+  --main-color-hover: rgb(134, 206, 230);
+  --main-color-dark: rgb(18, 136, 190);
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+
 body {
   margin: 0;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Roboto, monospace, Arial, sans-serif;
 }
 
 .container {
@@ -21,7 +32,7 @@ body {
 /* Navbar */
 .navbar {
   display: flex;
-  background-color: rgb(173, 216, 230);
+  background-color: var(--main-color);
   font-size: 1.25rem;
 }
 .navbar ul {
@@ -38,14 +49,14 @@ body {
   margin: 0;
   text-align: center;
   text-decoration: none;
-  color: rgb(0, 0, 0, 1);
+  color: black;
 }
 .navbar ul li:hover {
-  background-color: rgb(134, 206, 230);
+  background-color: var(--main-color-hover);
 }
 .navbar a.active {
-  background-color: rgb(18, 136, 190);
-  color: #ffffff;
+  background-color: var(--main-color-dark);
+  color: white;
 }
 
 /* Vertical nav */
@@ -56,4 +67,24 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+/* Times table */
+table.times-table, table.times-table th, table.times-table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table.times-table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+table.times-table th, table.times-table td {
+  text-align: center;
+  padding: 0.5rem;
+}
+table.times-table td {
+
+}
+table.times-table th {
+  
 }
