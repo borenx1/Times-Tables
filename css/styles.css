@@ -2,6 +2,8 @@
   --main-color: rgb(173, 216, 230);
   --main-color-hover: rgb(134, 206, 230);
   --main-color-dark: rgb(18, 136, 190);
+  --main-color-dark-hover: rgb(18, 107, 190);
+  --times-table-color-heading: rgb(255, 248, 145);
 }
 
 @font-face {
@@ -13,20 +15,20 @@ body {
   margin: 0;
   font-family: Roboto, monospace, Arial, sans-serif;
 }
-
 .container {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-
 .text-center {
   text-align: center;
 }
-
 .center-horizontal {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
+}
+.blur {
+  opacity: 0.5;
 }
 
 /* Navbar */
@@ -77,14 +79,46 @@ table.times-table, table.times-table th, table.times-table td {
 table.times-table {
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 576px) {
+  table.times-table {
+    /* Same col width */
+    table-layout: fixed;
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  table.times-table {
+    table-layout: fixed;
+    width: 90%;
+  }
+}
+@media (min-width: 1200px) {
+  table.times-table {
+    table-layout: fixed;
+    width: 80%;
+  }
 }
 table.times-table th, table.times-table td {
   text-align: center;
-  padding: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  min-width: 1.5rem;
 }
 table.times-table td {
 
 }
 table.times-table th {
-  
+  background-color: var(--times-table-color-heading);
+}
+table.times-table th:hover {
+  background-color: var(--main-color-dark-hover);
+  color: white;
+}
+table.times-table td:hover {
+  background-color: var(--main-color-hover);
 }
