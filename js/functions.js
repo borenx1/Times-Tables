@@ -32,9 +32,9 @@ function randomInt(min, max) {
  * @param {number} colMin Minimum column number. Defaults to 1.
  * @returns A jQuery table object.
  */
-function generateTimesTable(rowMax, colMax, rowMin = 1, colMin = 1) {
+function generateTimesTable(rowMax, colMax, rowMin = 1, colMin = 1, class_ = "times-table") {
   console.log("Generate " + rowMax + " x " + colMax + " times table");
-  var table = $("<table/>");
+  var table = $("<table/>", {"class": class_});
   var tableRows = [];
   for (let i = rowMin; i <= rowMax; i++) {
     let rowItems = ["<tr>"];
