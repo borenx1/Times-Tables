@@ -25,30 +25,48 @@ function randomInt(min, max) {
 }
 
 /**
- * Generates and returns a times table.
+ * Generates and returns a times table object (table element in jQuery).
  * @param {number} rowMax Maximum row number.
  * @param {number} colMax Maximum column number.
- * @param {number} rowMin Minimum row number. Defaults to 1.
- * @param {number} colMin Minimum column number. Defaults to 1.
+ * @param {function} hoverCallback Callback when a cell is hovered, receives 2 arguments: row and column of the cell.
+ * @param {string} class_ The class of the <table/> element.
  * @returns A jQuery table object.
  */
-function generateTimesTable(rowMax, colMax, rowMin = 1, colMin = 1, class_ = "times-table") {
+function generateTimesTable(rowMax, colMax, hoverCallback = null, class_ = "times-table") {
   console.log("Generate " + rowMax + " x " + colMax + " times table");
   var table = $("<table/>", {"class": class_});
   var tableRows = [];
-  for (let i = rowMin; i <= rowMax; i++) {
+  for (let i = 1; i <= rowMax; i++) {
     let rowItems = ["<tr>"];
-    for (let j = colMin; j <= colMax; j++) {
+    for (let j = 1; j <= colMax; j++) {
       let number = i * j;
       // Use table header <th/> if first row or column, else <td/>
-      let cell = (i == rowMin || j == colMin) ? "<th>" + number + "</th>" : "<td>" + number + "</td>";
+      let cellTag = (i == 1 || j == 1) ? "th" : "td";
+      let cell = `<${cellTag} data-row="${i}" data-col="${j}">${number}</${cellTag}>`;
       rowItems.push(cell);
     }
     rowItems.push("</tr>");
     tableRows.push(rowItems.join(""));
   }
-
   table.html(tableRows.join(""));
+  // Add JS to the table to add styles when hovering over a cell
+  table.find("td").hover(function() {
+    let row = this.getAttribute("data-row");
+    let col = this.getAttribute("data-col");
+    // Highlight header cells with the same row or column
+    table.find(`th[data-row="${row}"], th[data-col="${col}"]`).addClass("hover");
+    // Highlight table cells with the same row or column (except the hovered cell)
+    table.find(`td[data-row="${row}"], td[data-col="${col}"]`)
+         .filter(`:not([data-row="${row}"][data-col="${col}"])`)
+         .addClass("hover blur");
+    // Execute callback from argument
+    if (hoverCallback) {
+      hoverCallback(row, col);
+    }
+  }, function() {
+    // Remove hover related classes when mouse exits the cell
+    table.find("td, th").removeClass("hover blur");
+  });
 
   return table
 }

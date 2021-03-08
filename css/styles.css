@@ -108,17 +108,16 @@ table.times-table th, table.times-table td {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   min-width: 1.5rem;
-}
-table.times-table td {
-
+  cursor: none;
 }
 table.times-table th {
   background-color: var(--times-table-color-heading);
 }
-table.times-table th:hover {
+table.times-table th:hover, table.times-table th.hover {
   background-color: var(--main-color-dark-hover);
   color: white;
 }
-table.times-table td:hover {
+table.times-table td:hover, table.times-table td.hover {
   background-color: var(--main-color-hover);
+  font-weight: bold;
 }

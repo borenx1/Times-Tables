@@ -10,7 +10,10 @@ $(function() {
   });
 
   $("#select-level").on("change", function() {
-    $("#times-table-container").html(generateTimesTable(this.value, this.value));
+    $("#times-table-container").html(generateTimesTable(this.value, this.value, function(row, col) {
+      // Might need this callback later
+      // console.log(`${row}, ${col}`);
+    }));
     // Change "Go to quiz" link to the current level
     $("#quiz-link").attr("href", "quiz.html?level=" + this.value);
   });
