@@ -121,3 +121,62 @@ table.times-table td:hover, table.times-table td.hover {
   background-color: var(--main-color-hover);
   font-weight: bold;
 }
+
+/* Quiz */
+.quiz-container {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  border: 1px solid black;
+}
+.quiz-bar {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+}
+.quiz-content {
+  
+}
+.quiz-output {
+  display: block;
+  text-align: center;
+  font-size: 5rem;
+  padding: 1.5rem;
+}
+.quiz-comment {
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  min-height: 1.5rem;
+}
+.quiz-progress {
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+input.quiz-input {
+  display: block;
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  text-align: center;
+  font-size: 2rem;
+}
+button.quiz-enter, input.quiz-enter {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 20rem;
+  font-size: 2rem;
+}
