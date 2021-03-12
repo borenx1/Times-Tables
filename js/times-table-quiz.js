@@ -1,3 +1,5 @@
+import {TimesTableQuiz, TimesTableQuizController} from "./quiz/times-table.js";
+
 var quizController;
 
 function getLevel() {
@@ -25,6 +27,30 @@ function initQuizDefault() {
     "quiz-enter",
     "quiz-progress"
     );
+}
+
+/**
+ * Fill the "Minimum factor" quiz setting select element based on the selected level.
+ * @param {number} level The times table level
+ * @param {string} selectId The id of the "Minimum factor" select element
+ */
+ function fillQuizMinFactorSelect(level, selectId) {
+  var select = $("#" + selectId);
+  var currentMinFactor = select.val();
+  // Try to keep the current selected "min factor".
+  // Reset "min factor" to 2 if the new level is less than the current "min factor" (min factor <= level).
+  var newMinFactor = currentMinFactor > level ? 2 : currentMinFactor;
+  
+  var options = [];
+  for (let i = 1; i <= level; i++) {
+    if (i == newMinFactor) {
+      options.push(`<option value="${i}" selected>${i}</option>`);
+    } else {
+      options.push(`<option value="${i}">${i}</option>`);
+    }
+  }
+
+  select.html(options.join(""));
 }
 
 // Generate times table quizzes based on level selection
