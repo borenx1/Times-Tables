@@ -152,7 +152,6 @@ table.times-table th, table.times-table td {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   min-width: 1.75rem;
-  cursor: none;
 }
 @media (min-width: 576px) {
   table.times-table th, table.times-table td {
