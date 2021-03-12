@@ -63,6 +63,8 @@ $(function() {
     }));
     // Change "Go to quiz" link to the current level
     $("#quiz-link").attr("href", "times-table-quiz.html?level=" + this.value);
+    // Change "Print this table" link to the current level
+    $("#print-table-link").attr("href", "print-table.html?level=" + this.value);
   });
 
   // Generate default table on load
