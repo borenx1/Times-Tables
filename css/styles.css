@@ -8,6 +8,7 @@
   --main-color-hover: rgb(134, 206, 230);
   --main-color-dark: rgb(18, 136, 190);
   --main-color-dark-hover: rgb(18, 107, 190);
+  --secondary-color: rgb(255, 251, 196);
   --times-table-color-heading: rgb(255, 248, 145);
   --font-monospace: "Courier New", monospace;
 }
@@ -159,14 +160,11 @@ table.times-table td:hover, table.times-table td.hover {
   margin-right: auto;
   width: fit-content;
   border: 1px solid black;
+
 }
 .quiz-top-bar {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  background-color: var(--secondary-color);
+  padding: 0.5rem;
   border-bottom: 1px solid black;
 }
 .quiz-content {
