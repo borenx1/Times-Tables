@@ -16,7 +16,8 @@ $(document).ready(function() {
         break;
       }
       case "quiz.html":
-      case "times-table-quiz.html": {
+      case "times-table-quiz.html":
+      case "times-table-single-quiz.html": {
         $("#nav-quiz").addClass("active");
         break;
       }
