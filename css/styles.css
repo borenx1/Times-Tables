@@ -55,12 +55,25 @@ body {
   text-decoration: none;
   color: black;
 }
-.navbar li:hover {
+.navbar li a:hover:not(.active) {
   background-color: var(--main-color-hover);
 }
 .navbar a.active {
   background-color: var(--main-color-dark);
   color: white;
+}
+/* Navbar dropdown */
+.navbar li.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+}
+.navbar li.dropdown:hover .dropdown-content {
+  display: block;
+  border: 1px solid black;
+}
+.navbar li.dropdown .dropdown-content a:not(:last-child) {
+  border-bottom: 1px solid black;
 }
 
 /* Vertical nav */
