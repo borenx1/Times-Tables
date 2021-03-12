@@ -23,9 +23,9 @@ function initQuizDefault() {
     quiz,
     "quiz-output",
     "quiz-comment",
+    "quiz-progress",
     "quiz-input",
-    "quiz-enter",
-    "quiz-progress"
+    "quiz-enter"
     );
 }
 

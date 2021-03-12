@@ -1,18 +1,20 @@
 import {randomInt} from "./helper.js";
 
-/** The logic for the times table quiz. */
-export class TimesTableQuiz {
+/** The logic for the times table (single row) quiz. The questions are
+ * a x b or b x a where a is the level and b is a random number.
+ */
+export class TimesTableSingleRowQuiz {
   /**
-   * Constructor for a Times Table Quiz.
+   * Constructor for a Times Table (Single Row) Quiz.
    * @param {number} level The level of the quiz (level x level times table).
    * @param {number} size How many questions in the quiz (0 for unlimited).
-   * @param {number} minFactor The minimum factor (multiple) of the questions.
+   * @param {number} maxFactor The maximum variable factor (multiple) of the questions.
    */
-  constructor(level, size, minFactor) {
+  constructor(level, size, maxFactor) {
     // Quiz settings
     this.level = level;
     this.size = size;
-    this.minFactor = minFactor;
+    this.maxFactor = maxFactor;
     // Init quiz variables
     this.progress;
     this.correctAnswers;
@@ -28,8 +30,15 @@ export class TimesTableQuiz {
   }
 
   nextQuestion() {
-    this.factor1 = randomInt(this.minFactor, this.level);
-    this.factor2 = randomInt(this.minFactor, this.level);
+    // Randomly assign variable factor to factor1 or factor2
+    let variableFactor = randomInt(2, this.maxFactor);
+    if (randomInt(0, 1) == 0) {
+        this.factor1 = this.level;
+        this.factor2 = variableFactor;
+    } else {
+        this.factor1 = variableFactor;
+        this.factor2 = this.level;
+    }
     this.progress += 1;
   }
 
@@ -61,12 +70,12 @@ export class TimesTableQuiz {
   }
 }
   
-/** A controller for connecting a times table quiz to views. */
-export class TimesTableQuizController {
+/** A controller for connecting a times table (single row) quiz to views. */
+export class TimesTableSingleRowQuizController {
   /**
-   * Constructor for a Times Table Quiz controller. The initial state depends on the given state of
-   * the passed TimesTableQuiz object.
-   * @param {TimesTableQuiz} quiz A TimesTableQuiz object.
+   * Constructor for a Times Table (Single Row) Quiz controller. The initial state depends on the given state of
+   * the passed TimesTableSingleRowQuiz object.
+   * @param {TimesTableSingleRowQuiz} quiz A TimesTableSingleRowQuiz object.
    * @param {string} outputId The id of the question output element.
    * @param {string} commentId The id of the comment output element.
    * @param {string} progressId The id of the progress display element.

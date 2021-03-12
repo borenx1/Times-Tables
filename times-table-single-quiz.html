@@ -30,7 +30,49 @@
           </select>
         <a id="table-link" href="table.html">See full table</a>
       </section>
-      
+      <div class="quiz-container">
+        <div class="quiz-top-bar">
+          <label for="select-quiz-size"># of questions:</label>
+            <select id="select-quiz-size">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="0">Unlimited</option>
+            </select>
+            <label for="select-quiz-max-factor">Maximum factor:</label>
+            <select id="select-quiz-max-factor">
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12" selected>12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+            <button id="button-quiz-reset" class="quiz-reset-button">Reset quiz</button>
+        </div>
+        <div class="quiz-content">
+          <label id="quiz-output" class="quiz-output" for="quiz-input"></label>
+          <div id="quiz-comment" class="quiz-comment"></div>
+          <div id="quiz-progress" class="quiz-progress">Question 1</div>
+          <input id="quiz-input" type="number" class="quiz-input">
+          <div>
+            <button id="quiz-enter" class="quiz-enter">Enter</button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="js/jquery-3.6.0.min.js"></script>
