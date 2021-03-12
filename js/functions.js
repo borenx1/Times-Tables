@@ -15,9 +15,17 @@ $(document).ready(function() {
         $("#nav-table").addClass("active");
         break;
       }
-      case "quiz.html":
-      case "times-table-quiz.html":
+      case "times-table-quiz.html": {
+        $("#nav-quiz-times-table").addClass("active");
+        $("#nav-quiz").addClass("active");
+        break;
+      }
       case "times-table-single-quiz.html": {
+        $("#nav-quiz-single").addClass("active");
+        $("#nav-quiz").addClass("active");
+        break;
+      }
+      case "quiz.html": {
         $("#nav-quiz").addClass("active");
         break;
       }

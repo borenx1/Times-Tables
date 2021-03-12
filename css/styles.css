@@ -9,6 +9,7 @@
   --main-color-dark: rgb(18, 136, 190);
   --main-color-dark-hover: rgb(18, 107, 190);
   --secondary-color: rgb(255, 251, 196);
+  --secondary-color-dark: rgb(255, 238, 0);
   --times-table-color-heading: rgb(255, 248, 145);
   --font-monospace: "Courier New", monospace;
 }
@@ -74,6 +75,10 @@ body {
 }
 .navbar li.dropdown .dropdown-content a:not(:last-child) {
   border-bottom: 1px solid black;
+}
+.navbar li.dropdown .dropdown-content a.active {
+  background-color: var(--secondary-color-dark);
+  color: black;
 }
 
 /* Vertical nav */
