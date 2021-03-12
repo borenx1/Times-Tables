@@ -44,10 +44,10 @@ body {
   margin: 0;
   padding: 0;
 }
-.navbar ul li {
+.navbar li {
   float: left;
 }
-.navbar ul li a {
+.navbar li a {
   display: block;
   padding: 0.75rem;
   margin: 0;
@@ -55,7 +55,7 @@ body {
   text-decoration: none;
   color: black;
 }
-.navbar ul li:hover {
+.navbar li:hover {
   background-color: var(--main-color-hover);
 }
 .navbar a.active {
