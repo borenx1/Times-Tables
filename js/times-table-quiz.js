@@ -42,7 +42,7 @@ function initQuizDefault() {
   var newMinFactor = currentMinFactor > level ? 2 : currentMinFactor;
   
   var options = [];
-  for (let i = 1; i <= level; i++) {
+  for (let i = 1; i < level; i++) {
     if (i == newMinFactor) {
       options.push(`<option value="${i}" selected>${i}</option>`);
     } else {
