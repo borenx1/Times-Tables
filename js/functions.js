@@ -1,7 +1,8 @@
 $(document).ready(function() {
   console.log("functions.js loaded");
   // Load navbar on pages with ".navbar-container"
-  $(".navbar-container").load("common/navbar.html", function() {
+  let navbarContainer = $(".navbar-container");
+  navbarContainer.load("common/navbar.html", function() {
     // Get the last item in the path (to be able to host on GitHub Pages)
     var path = window.location.pathname.split("/").slice(-1)[0];
     if (path == "index.html" || path == "") {
@@ -12,6 +13,7 @@ $(document).ready(function() {
       $("#nav-quiz").addClass("active");
     }
   });
+  
 });
 
 /**

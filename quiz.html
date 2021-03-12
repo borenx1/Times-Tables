@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Times Table Quiz</title>
+    <title>Times Tables - Quizzes</title>
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
@@ -11,56 +11,17 @@
       <div class="navbar-container"></div>
     </header>
     <main class="container">
-      <h1 class="text-center">Times Table Quiz</h1>
-      <p class="text-center">Test and practice your times table knowledge!</p>
-      <section class="center-horizontal">
-          <label for="select-level">Choose your level:</label>
-          <select id="select-level">
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-          </select>
-        <a id="table-link" href="table.html">See full table</a>
-      </section>
-      <div class="quiz-container">
-        <div class="quiz-top-bar">
-          <label for="select-quiz-size"># of questions:</label>
-            <select id="select-quiz-size">
-              <option value="5">5</option>
-              <option value="10" selected>10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="0">Unlimited</option>
-            </select>
-            <label for="select-quiz-min-factor">Minimum factor:</label>
-            <select id="select-quiz-min-factor">
-              <option value="1">1</option>
-              <option value="2" selected>2</option>
-            </select>
-            <button id="button-quiz-reset" class="quiz-reset-button">Reset quiz</button>
-        </div>
-        <div class="quiz-content">
-          <label id="quiz-output" for="quiz-input" class="quiz-output"></label>
-          <div id="quiz-comment" class="quiz-comment"></div>
-          <div id="quiz-progress" class="quiz-progress">Question 1</div>
-          <input id="quiz-input" type="number" class="quiz-input">
-          <div>
-            <button id="quiz-enter" class="quiz-enter">Enter</button>
-          </div>
-        </div>
-      </div>
+      <h1 class="text-center">Quizzes</h1>
+      <p class="text-center">Choose a quiz then test your times table knowledge!</p>
+      <nav class="nav center-horizontal text-center">
+        <ul>
+          <li><a href="times-table-quiz.html">Times Tables Quiz</a></li>
+          <li><a href="#">Times Row Quiz</a></li>
+        </ul>
+      </nav>
     </main>
 
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/quiz.js"></script>
   </body>
 </html>

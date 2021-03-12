@@ -15,7 +15,7 @@ $(function() {
       // console.log(`${row}, ${col}`);
     }));
     // Change "Go to quiz" link to the current level
-    $("#quiz-link").attr("href", "quiz.html?level=" + this.value);
+    $("#quiz-link").attr("href", "times-table-quiz.html?level=" + this.value);
   });
 
   // Generate default table on load
