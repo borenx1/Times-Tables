@@ -1,3 +1,5 @@
+import {randomInt} from "./helper.js";
+
 /** The logic for the times table quiz. */
 export class TimesTableQuiz {
     /**
