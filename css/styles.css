@@ -160,7 +160,7 @@ table.times-table td:hover, table.times-table td.hover {
   width: fit-content;
   border: 1px solid black;
 }
-.quiz-bar {
+.quiz-top-bar {
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
