@@ -64,12 +64,34 @@ body {
 
 /* Vertical nav */
 .nav {
-  
+  font-size: 1.5rem;
 }
 .nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  border: 1px solid var(--main-color-dark);
+}
+.nav li:not(:last-child) {
+  border-bottom: 1px solid var(--main-color-dark);
+}
+.nav li a {
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-width: 10rem;
+  color: black;
+  text-decoration: none;
+}
+@media (min-width: 576px) {
+  .nav li a {
+    min-width: 20rem;
+  }
+}
+.nav li a:hover {
+  background-color: var(--main-color-hover);
 }
 
 /* Times table */
